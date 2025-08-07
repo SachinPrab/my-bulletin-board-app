@@ -6,7 +6,7 @@ A simple, clean bulletin board web application built using React and Redux Toolk
 
 ## 🚀 Live Demo
 
-👉 [View on Vercel](https://your-app-url.vercel.app)
+👉 [View on Vercel](https://your-app-url.vercel.app](https://my-bulletin-board-app.vercel.app/)
 
 ---
 
