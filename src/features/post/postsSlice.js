@@ -26,19 +26,46 @@ const postsSlice = createSlice({
             };
         },
     },
-    reactionAdded(state, action) {
+    postUpdated(state, action) {
+    const { id, title, content } = action.payload;
+    const existingPost = state.find(post => post.id === id);
+    if (existingPost) {
+      existingPost.title = title;
+      existingPost.content = content;
+    }
+  },
+  postDeleted(state, action) {
+    const postId = action.payload;
+    return state.filter(post => post.id !== postId);
+  },
+    reactionAdded: (state, action) => {
+  const { postId, reaction } = action.payload;
+  const existingPost = state.find(post => post.id === postId);
+
+  if (existingPost) {
+    if (!existingPost.reactions) {
+      existingPost.reactions = {};
+    }
+
+    // Toggle logic
+    const currentCount = existingPost.reactions[reaction] || 0;
+    existingPost.reactions[reaction] = currentCount === 0 ? 1 : 0;
+  }
+}
+,
+        reactionDeleted(state, action) {
             const { postId, reaction } = action.payload;
             const existingPost = state.find(post => post.id === postId);
             if (existingPost) {
-                existingPost.reactions[reaction]++;
+                existingPost.reactions[reaction]--;
             }
-        }
+        },
 }
 }
 );
 
 export const selectAllPosts = (state) => state.posts;
 
-export const { postAdded, reactionAdded } = postsSlice.actions;
+export const { postAdded, postUpdated,postDeleted,reactionDeleted, reactionAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;
