@@ -24,6 +24,7 @@ A simple, clean bulletin board web application built using React and Redux Toolk
 ---
 
 🧪 Sample Usage
+
 Fill the "Add Post" form with a title, content, and select an author.
 
 Click a reaction to add one — click again to remove it.
