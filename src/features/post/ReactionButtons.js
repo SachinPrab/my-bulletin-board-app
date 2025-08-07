@@ -7,7 +7,7 @@ const reactionEmoji = {
   heart: "❤️",
   laugh: "😂",
   angry: "😠",
-  disgust: "🤢",
+  disgusted: "🤢",
   sad: "😢"
 };
 
